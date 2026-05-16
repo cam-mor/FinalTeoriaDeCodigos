@@ -1,4 +1,5 @@
 import tkinter as tk
+import webbrowser
 from tkinter import ttk
 from tkinter.scrolledtext import ScrolledText
 
@@ -35,6 +36,7 @@ class AplicacionTeoriaCodigos(tk.Tk):
         ttk.Button(sidebar, text="Punto 2 - Lineal binario", command=self.show_punto2).pack(fill="x", pady=4)
         ttk.Button(sidebar, text="Punto 3 - Ciclico", command=self.show_punto3).pack(fill="x", pady=4)
         ttk.Button(sidebar, text="Acerca", command=self.show_ayuda).pack(fill="x", pady=4)
+        ttk.Button(sidebar, text="Abrir GitHub", command=self.open_github).pack(fill="x", pady=4)
 
         self.salida = ScrolledText(main, wrap="word", font=("Consolas", 11))
         self.salida.grid(row=0, column=0, sticky="nsew")
@@ -48,6 +50,7 @@ class AplicacionTeoriaCodigos(tk.Tk):
         menu.add_cascade(label="Puntos", menu=puntos)
         ayuda = tk.Menu(menu, tearoff=0)
         ayuda.add_command(label="Acerca", command=self.show_ayuda)
+        ayuda.add_command(label="Abrir GitHub", command=self.open_github)
         menu.add_cascade(label="Ayuda", menu=ayuda)
         self.config(menu=menu)
 
@@ -157,10 +160,14 @@ class AplicacionTeoriaCodigos(tk.Tk):
 
         self._set_text("".join(cuerpo))
 
+    def open_github(self):
+        webbrowser.open_new("https://github.com/cam-mor/FinalTeoriaDeCodigos")
+
     def show_ayuda(self):
         texto = (
             "Proyecto Final - Teoria de Codigos\n\n"
             "Repositorio GitHub:\n"
-            "(link repo)\n"
+            "https://github.com/cam-mor/FinalTeoriaDeCodigos\n\n"
+            "Use 'Abrir GitHub' en el menu Ayuda o en la barra lateral.\n"
         )
         self._set_text(texto)
